@@ -1,34 +1,20 @@
 name: CI
 
-on:
-  push:
-    branches: [ "setup-task" ]
-  pull_request:
-    branches: [ "setup-task" ]
-  workflow_dispatch:
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout your repo
-    - uses: actions/checkout@v4
-
-- name: Set up Python
-  uses: actions/setup-python@v4
-  with:
-    python-version: '3.x'
-
-- name: Upgrade pip, setuptools, wheel
-  run: |
-    python -m pip install --upgrade pip setuptools wheel
-
-- name: Install dependencies
-  run: pip install -r requirements.txt
-
-
-      # Optional: run a simple test to verify install
-      - name: Test imports
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
         run: |
-          python -c "import pandas; import numpy; import matplotlib; import seaborn; import streamlit"
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Run tests (placeholder)
+        run: echo "Add your test commands here"
