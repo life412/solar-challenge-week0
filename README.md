@@ -10,7 +10,7 @@ To reproduce the environment locally:
 
 1. **Clone the repository**
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/life412/solar-challenge-week0.git
 cd solar-challenge-week0
 
 Create and activate a Python virtual environment
@@ -21,8 +21,6 @@ python -m venv venv
 # Activate on Windows
 venv\Scripts\activate
 
-# Activate on Mac/Linux
-source venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
